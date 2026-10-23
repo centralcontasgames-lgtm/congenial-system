@@ -1,0 +1,189 @@
+# congenial-system
+Ferramentas gratuitas para criadores de conteúdo
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b14">
+<meta name="description" content="NovaHub: ferramentas gratuitas para criadores de conteúdo.">
+<title>NovaHub — Creator Tools</title>
+<style>
+:root{--bg:#090b14;--card:#14192a;--line:#2b3450;--text:#f5f6ff;--muted:#aab3cc;--purple:#a58aff;--cyan:#5be5e9}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top right,#29204b,transparent 45%),var(--bg);color:var(--text);font:16px/1.6 system-ui,Arial,sans-serif}
+header,main,footer{width:min(1050px,92%);margin:auto}
+header{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
+.logo b{background:linear-gradient(90deg,var(--purple),var(--cyan));color:transparent;background-clip:text}
+.pill{font-size:12px;border:1px solid #5be5e966;padding:4px 9px;border-radius:20px;color:var(--cyan)}
+.hero{padding:55px 0 30px}
+.eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:3px}
+h1{font-size:clamp(38px,7vw,65px);line-height:1.05;letter-spacing:-2px;margin:12px 0}
+h1 span{color:var(--purple)}
+p{color:var(--muted)}
+.hero p{max-width:600px;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 38px}
+.stat,.card{background:#ffffff07;border:1px solid var(--line);border-radius:17px;padding:17px}
+.stat strong,.stat small{display:block}.stat small{color:var(--muted)}
+h2{font-size:25px;letter-spacing:-.5px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card h3{margin:0;font-size:19px}.card p{font-size:14px;margin:4px 0 15px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:12px;background:#090c16;border:1px solid #343d59;border-radius:10px;color:var(--text);font:inherit}
+textarea{min-height:85px;resize:vertical}
+button{font:inherit;font-weight:800;border:0;border-radius:10px;padding:11px 15px;cursor:pointer}
+.primary{background:linear-gradient(100deg,var(--purple),var(--cyan));color:#090b14;width:100%;margin-top:14px}
+.secondary{background:#222940;color:var(--text);border:1px solid var(--line);margin-top:9px}
+.result{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;background:#090c16;border:1px dashed #424d6c;border-radius:10px;padding:12px;margin-top:12px}
+.note{margin:25px 0;background:#5be5e90b;border:1px solid #5be5e933;border-radius:14px;padding:15px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:25px 0;margin-top:40px;font-size:13px;color:var(--muted)}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.hero{padding-top:38px}.stats{gap:7px}.stat{padding:10px}.stat small{font-size:11px}.stat strong{font-size:14px}.pill{font-size:10px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><b>✦ Nova</b>Hub</div>
+  <span class="pill">CREATOR TOOLS</span>
+</header>
+<main>
+<section class="hero">
+  <div class="eyebrow">SUA CRIATIVIDADE, EM OUTRO NÍVEL</div>
+  <h1>Crie conteúdo.<br><span>Cresça com estratégia.</span></h1>
+  <p>Ferramentas simples e gratuitas para planejar seus vídeos, gerar ideias e preparar seu próximo conteúdo.</p>
+</section>
+
+<div class="stats">
+  <div class="stat"><strong>04 ferramentas</strong><small>Para criadores</small></div>
+  <div class="stat"><strong>Gratuito</strong><small>Sem cadastro</small></div>
+  <div class="stat"><strong>Mobile first</strong><small>Feito para celular</small></div>
+</div>
+
+<h2>⚡ Suas ferramentas</h2>
+<div class="grid">
+<section class="card">
+<h3>✍️ Gerador de títulos</h3>
+<p>Crie sugestões para seu vídeo.</p>
+<label for="tema">Tema do vídeo</label>
+<input id="tema" placeholder="Ex.: dicas de Free Fire">
+<label for="estilo">Estilo</label>
+<select id="estilo">
+<option value="curioso">Curiosidade</option>
+<option value="direto">Direto ao ponto</option>
+<option value="tutorial">Tutorial</option>
+<option value="desafio">Desafio</option>
+</select>
+<button class="primary" onclick="titulos()">Gerar títulos</button>
+<div class="result" id="rtitulo" aria-live="polite"></div>
+<button class="secondary" onclick="copiar('rtitulo')">Copiar títulos</button>
+</section>
+
+<section class="card">
+<h3>＃ Gerador de hashtags</h3>
+<p>Gere hashtags a partir do tema informado.</p>
+<label for="hashtags">Tema ou palavras-chave</label>
+<input id="hashtags" placeholder="Ex.: games, dicas, gameplay">
+<label for="plataforma">Plataforma</label>
+<select id="plataforma">
+<option value="Shorts">YouTube Shorts</option>
+<option value="TikTok">TikTok</option>
+<option value="Reels">Instagram Reels</option>
+</select>
+<button class="primary" onclick="gerarTags()">Gerar hashtags</button>
+<div class="result" id="rtags" aria-live="polite"></div>
+<button class="secondary" onclick="copiar('rtags')">Copiar hashtags</button>
+</section>
+
+<section class="card">
+<h3>📝 Gerador de descrição</h3>
+<p>Prepare uma descrição para personalizar.</p>
+<label for="assunto">Assunto do vídeo</label>
+<input id="assunto" placeholder="O que seu vídeo mostra?">
+<label for="canal">Nome do canal (opcional)</label>
+<input id="canal" placeholder="Nome do canal">
+<button class="primary" onclick="descricao()">Gerar descrição</button>
+<div class="result" id="rdesc" aria-live="polite"></div>
+<button class="secondary" onclick="copiar('rdesc')">Copiar descrição</button>
+</section>
+
+<section class="card">
+<h3>💡 Ideias para vídeos</h3>
+<p>Encontre um ponto de partida para criar.</p>
+<label for="nicho">Seu nicho</label>
+<input id="nicho" placeholder="Ex.: games, estudos, tecnologia">
+<label for="formato">Formato</label>
+<select id="formato">
+<option value="curto">Vídeo curto</option>
+<option value="lista">Lista ou ranking</option>
+<option value="guia">Tutorial</option>
+<option value="historia">História ou experiência</option>
+</select>
+<button class="primary" onclick="ideias()">Gerar ideias</button>
+<div class="result" id="rideias" aria-live="polite"></div>
+<button class="secondary" onclick="copiar('rideias')">Copiar ideias</button>
+</section>
+</div>
+
+<div class="note"><strong>💜 Dica:</strong> use as sugestões como ponto de partida. Personalize os textos e confirme que representam o conteúdo real do seu vídeo. Nenhuma ferramenta garante visualizações ou viralização.</div>
+</main>
+<footer>© <span id="ano"></span> NovaHub. Ferramentas gratuitas para criadores.<br>Os textos são processados no próprio navegador e não são enviados por este site.</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const valor=id=>$(id).value.trim();
+const titulo=s=>s?s[0].toUpperCase()+s.slice(1):s;
+$('ano').textContent=new Date().getFullYear();
+
+function titulos(){
+ const t=titulo(valor('tema'));
+ if(!t){$('rtitulo').textContent='Digite o tema do vídeo primeiro.';return}
+ const op={
+ curioso:[`O que você precisa saber sobre ${t}`,`${t}: vale a pena?`,`3 coisas surpreendentes sobre ${t}`],
+ direto:[`${t}: guia rápido`,`Como melhorar em ${t}`,`${t}: dicas práticas`],
+ tutorial:[`Como começar com ${t}: passo a passo`,`Aprenda ${t} do zero`,`Tutorial de ${t} para iniciantes`],
+ desafio:[`O desafio de ${t}`,`Testei ${t}: veja o resultado`,`Você consegue fazer isso em ${t}?`]
+ };
+ $('rtitulo').textContent=op[$('estilo').value].map((x,i)=>(i+1)+'. '+x).join('\n');
+}
+
+function gerarTags(){
+ const t=valor('hashtags');
+ if(!t){$('rtags').textContent='Digite um tema primeiro.';return}
+ const palavras=t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9,; ]/g,' ').split(/[\s,;]+/).filter(Boolean);
+ const extra={Shorts:['Shorts','CriadorDeConteudo'],TikTok:['TikTok','ParaVoce'],Reels:['Reels','CriacaoDeConteudo']}[$('plataforma').value];
+ const tags=[...new Set([...palavras,...extra].map(x=>'#'+x))].slice(0,8);
+ $('rtags').textContent=tags.join(' ')+'\n\nConfira se cada hashtag é relevante para o vídeo.';
+}
+
+function descricao(){
+ const t=valor('assunto');
+ if(!t){$('rdesc').textContent='Digite o assunto do vídeo primeiro.';return}
+ const c=valor('canal');
+ $('rdesc').textContent=`Neste vídeo, vamos falar sobre ${t}.\n\nAcompanhe o conteúdo e compartilhe sua opinião nos comentários!\n${c?'Canal: '+c+'\n':''}\n#CriacaoDeConteudo #Dicas #Video`;
+}
+
+function ideias(){
+ const n=valor('nicho')||'seu tema';
+ const sets={
+ curto:[`Uma dica de ${n} em 30 segundos`,`3 erros comuns em ${n}`,`Mito ou verdade sobre ${n}?`,`O que eu gostaria de saber antes de começar em ${n}`,`Um truque útil de ${n}`],
+ lista:[`5 dicas para quem gosta de ${n}`,`3 ferramentas úteis para ${n}`,`Erros comuns de iniciantes em ${n}`,`O que vale a pena aprender primeiro em ${n}`,`Meus recursos favoritos para ${n}`],
+ guia:[`Como começar em ${n}`,`Guia para iniciantes em ${n}`,`Como resolver um problema comum de ${n}`,`Passo a passo de ${n}`,`Como praticar e evoluir em ${n}`],
+ historia:[`Uma experiência que me ensinou algo sobre ${n}`,`O que eu faria diferente em ${n}`,`Meu maior aprendizado com ${n}`,`Um desafio que enfrentei em ${n}`,`Respondendo a uma pergunta sobre ${n}`]
+ };
+ $('rideias').textContent=sets[$('formato').value].map((x,i)=>(i+1)+'. '+x).join('\n');
+}
+
+async function copiar(id){
+ const texto=$(id).textContent.trim();
+ if(!texto){alert('Gere um resultado primeiro.');return}
+ try{await navigator.clipboard.writeText(texto);alert('Copiado!')}
+ catch(e){
+   const area=document.createElement('textarea');
+   area.value=texto;document.body.appendChild(area);area.select();
+   document.execCommand('copy');area.remove();alert('Copiado!');
+ }
+}
+</script>
+</body>
+</html>
